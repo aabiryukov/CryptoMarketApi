@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{19FA129A-4457-43B3-9BA6-78A8CE8E329C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bitfinex</RootNamespace>
+    <AssemblyName>BitfinexApi</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\CryptoMarketApi.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BitfinexApi.cs" />
+    <Compile Include="BtcInfo.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Json\BitfinexActiveCreditsResponse.cs" />
+    <Compile Include="Json\BitfinexActiveSwapsInMarginResponse.cs" />
+    <Compile Include="Json\BitfinexBalanceResponse.cs" />
+    <Compile Include="Json\BitfinexCancelMultipleOrderPost.cs" />
+    <Compile Include="Json\BitfinexCancelOrderPost.cs" />
+    <Compile Include="Json\BitfinexCancelReplaceOrderResponse.cs" />
+    <Compile Include="Json\BitfinexCancelReplacePost.cs" />
+    <Compile Include="Json\BitfinexClaimPositionPost.cs" />
+    <Compile Include="Json\BitfinexCloseSwapPost.cs" />
+    <Compile Include="Json\BitfinexDepositPost.cs" />
+    <Compile Include="Json\BitfinexDepositResponse.cs" />
+    <Compile Include="Json\BitfinexHistoryPost.cs" />
+    <Compile Include="Json\BitfinexHistoryResponse.cs" />
+    <Compile Include="Json\BitfinexLendbookResponse.cs" />
+    <Compile Include="Json\BitfinexLendsResponse.cs" />
+    <Compile Include="Json\BitfinexMarginInfoResponse.cs" />
+    <Compile Include="Json\BitfinexMarginPositionResponse.cs" />
+    <Compile Include="Json\BitfinexMultipleNewOrderResponse.cs" />
+    <Compile Include="Json\BitfinexMultipleNewOrdersPost.cs" />
+    <Compile Include="Json\BitfinexMyTradesPost.cs" />
+    <Compile Include="Json\BitfinexMyTradesResponse.cs" />
+    <Compile Include="Json\BitfinexNewOfferPost.cs" />
+    <Compile Include="Json\BitfinexNewOrderPost.cs" />
+    <Compile Include="Json\BitfinexNewOrderResponse.cs" />
+    <Compile Include="Json\BitfinexOfferStatusPost.cs" />
+    <Compile Include="Json\BitfinexOfferStatusResponse.cs" />
+    <Compile Include="Json\BitfinexOrderBookGet.cs" />
+    <Compile Include="Json\BitfinexOrderStatusPost.cs" />
+    <Compile Include="Json\BitfinexOrderStatusResponse.cs" />
+    <Compile Include="Json\BitfinexPostBase.cs" />
+    <Compile Include="Json\BitfinexPublicTickerGet.cs" />
+    <Compile Include="Json\BitfinexSymbolsDetailsResponse.cs" />
+    <Compile Include="Json\BitfinexSymbolStatsResponse.cs" />
+    <Compile Include="Json\BitfinexTradesGet.cs" />
+    <Compile Include="Json\ErrorResponse.cs" />
+    <Compile Include="Json\LendbookTypes\Ask.cs" />
+    <Compile Include="Json\LendbookTypes\Bid.cs" />
+    <Compile Include="Json\MarginInfoTypes\MarginLimit.cs" />
+    <Compile Include="Json\MultipleOrderTypes\OrderId.cs" />
+    <Compile Include="Json\OrderbookTypes\Ask.cs" />
+    <Compile Include="Json\OrderbookTypes\Bid.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Common.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{948B9B9B-8CED-4A3D-AF73-A8147AF93B26}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ApiTest</RootNamespace>
+    <AssemblyName>ApiTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BitfinexTest.cs" />
+    <Compile Include="BitstampTest.cs" />
+    <Compile Include="BtcChinaTest.cs" />
+    <Compile Include="BtceTest.cs" />
+    <Compile Include="HuobiTest.cs" />
+    <Compile Include="OKCoinTest.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BitfinexApi\BitfinexApi.csproj">
+      <Project>{19fa129a-4457-43b3-9ba6-78a8ce8e329c}</Project>
+      <Name>BitfinexApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BtcChinaApi\BtcChinaApi.csproj">
+      <Project>{32f257c3-e814-43aa-adfd-ec05fd351cd9}</Project>
+      <Name>BtcChinaApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BtceApi\BtceApi.csproj">
+      <Project>{5c94acd3-1172-4fad-bcae-bb7b201d7521}</Project>
+      <Name>BtceApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitstampApi\BitstampApi.csproj">
+      <Project>{E36ECD12-0B89-415A-BD60-7F698AA79152}</Project>
+      <Name>BitstampApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HuobiApi\HuobiAPI.csproj">
+      <Project>{9e2333e7-0c1b-4379-ba2b-398d423e465c}</Project>
+      <Name>HuobiAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OKCoinApi\OKCoinAPI.csproj">
+      <Project>{d76daa8b-0266-4649-a005-1aea4141628f}</Project>
+      <Name>OKCoinAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

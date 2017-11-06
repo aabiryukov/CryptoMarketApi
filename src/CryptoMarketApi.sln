@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitfinexApi", "BitfinexApi\BitfinexApi.csproj", "{19FA129A-4457-43B3-9BA6-78A8CE8E329C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitstampApi", "BitstampAPI\BitstampApi.csproj", "{E36ECD12-0B89-415A-BD60-7F698AA79152}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcChinaApi", "BtcChinaApi\BtcChinaApi.csproj", "{32F257C3-E814-43AA-ADFD-EC05FD351CD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtceApi", "BtceApi\BtceApi.csproj", "{5C94ACD3-1172-4FAD-BCAE-BB7B201D7521}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuobiAPI", "HuobiApi\HuobiAPI.csproj", "{9E2333E7-0C1B-4379-BA2B-398D423E465C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OKCoinAPI", "OKCoinApi\OKCoinAPI.csproj", "{D76DAA8B-0266-4649-A005-1AEA4141628F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C9A44FA1-E90F-4558-8DAC-8B7CD414307A}"
+	ProjectSection(SolutionItems) = preProject
+		CryptoMarketApi.ruleset = CryptoMarketApi.ruleset
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTest", "ApiTest\ApiTest.csproj", "{948B9B9B-8CED-4A3D-AF73-A8147AF93B26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19FA129A-4457-43B3-9BA6-78A8CE8E329C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19FA129A-4457-43B3-9BA6-78A8CE8E329C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19FA129A-4457-43B3-9BA6-78A8CE8E329C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19FA129A-4457-43B3-9BA6-78A8CE8E329C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E36ECD12-0B89-415A-BD60-7F698AA79152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E36ECD12-0B89-415A-BD60-7F698AA79152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E36ECD12-0B89-415A-BD60-7F698AA79152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E36ECD12-0B89-415A-BD60-7F698AA79152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32F257C3-E814-43AA-ADFD-EC05FD351CD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F257C3-E814-43AA-ADFD-EC05FD351CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F257C3-E814-43AA-ADFD-EC05FD351CD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F257C3-E814-43AA-ADFD-EC05FD351CD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C94ACD3-1172-4FAD-BCAE-BB7B201D7521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C94ACD3-1172-4FAD-BCAE-BB7B201D7521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C94ACD3-1172-4FAD-BCAE-BB7B201D7521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C94ACD3-1172-4FAD-BCAE-BB7B201D7521}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E2333E7-0C1B-4379-BA2B-398D423E465C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E2333E7-0C1B-4379-BA2B-398D423E465C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E2333E7-0C1B-4379-BA2B-398D423E465C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E2333E7-0C1B-4379-BA2B-398D423E465C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D76DAA8B-0266-4649-A005-1AEA4141628F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D76DAA8B-0266-4649-A005-1AEA4141628F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D76DAA8B-0266-4649-A005-1AEA4141628F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D76DAA8B-0266-4649-A005-1AEA4141628F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{948B9B9B-8CED-4A3D-AF73-A8147AF93B26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{948B9B9B-8CED-4A3D-AF73-A8147AF93B26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{948B9B9B-8CED-4A3D-AF73-A8147AF93B26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{948B9B9B-8CED-4A3D-AF73-A8147AF93B26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE9CCB83-F7C6-40B7-9909-7647AD5E5847}
+	EndGlobalSection
+EndGlobal
