@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BtcE
+namespace Wex
 {
 	public enum TradeType
 	{

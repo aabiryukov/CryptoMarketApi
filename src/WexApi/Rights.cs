@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace BtcE
+namespace Wex
 {
 	public class Rights
 	{

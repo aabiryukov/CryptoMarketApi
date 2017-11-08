@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 
-namespace BtcE
+namespace Wex
 {
 	public class CancelOrderAnswer
 	{

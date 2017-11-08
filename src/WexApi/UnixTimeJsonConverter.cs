@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace BtcE
+namespace Wex
 {
 	class UnixTimeJsonConverter : JsonConverter
 	{
@@ -21,7 +21,7 @@ namespace BtcE
 				return UnixTime.ConvertToDateTime(instance);
 			}
 
-			throw new BtcApiException("UnixTimeJsonConverter: Unexpected reader.TokenType=" + reader.TokenType);
+			throw new WexApiException("UnixTimeJsonConverter: Unexpected reader.TokenType=" + reader.TokenType);
 		}
 
 		public override bool CanConvert(Type objectType)

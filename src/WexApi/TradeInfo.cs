@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System;
-namespace BtcE
+namespace Wex
 {
 	// ReSharper disable UnusedAutoPropertyAccessor.Local
 	public class TradeInfo
@@ -14,12 +14,12 @@ namespace BtcE
 		public DateTime Date { get; private set; }
 		[JsonProperty("item", Required = Required.Always)]
 		[JsonConverter(typeof(StringEnumConverter))]
-		public BtceCurrency Item { get; private set; }
+		public WexCurrency Item { get; private set; }
 		[JsonProperty("price", Required = Required.Always)]
 		public decimal Price { get; private set; }
 		[JsonProperty("price_currency", Required = Required.Always)]
 		[JsonConverter(typeof(StringEnumConverter))]
-		public BtceCurrency PriceCurrency { get; private set; }
+		public WexCurrency PriceCurrency { get; private set; }
 		[JsonProperty("tid", Required = Required.Always)]
 		public UInt32 Tid { get; private set; }
 		[JsonProperty("trade_type", Required = Required.Always)]

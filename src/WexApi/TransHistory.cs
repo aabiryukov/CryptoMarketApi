@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
-namespace BtcE
+namespace Wex
 {
     public class Transaction
     {
@@ -16,7 +16,7 @@ namespace BtcE
 		public decimal Amount { get; private set; }
 		[JsonProperty("currency", Required = Required.Always)]
 		[JsonConverter(typeof(StringEnumConverter))]
-		public BtceCurrency Currency { get; private set; }
+		public WexCurrency Currency { get; private set; }
 		[JsonProperty("desc", Required = Required.Default)]
 		public string Description { get; private set; }
 		[JsonProperty("status", Required = Required.Always)]

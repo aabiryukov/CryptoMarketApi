@@ -8,8 +8,8 @@
     <ProjectGuid>{5C94ACD3-1172-4FAD-BCAE-BB7B201D7521}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BtcE</RootNamespace>
-    <AssemblyName>BtceApi</AssemblyName>
+    <RootNamespace>Wex</RootNamespace>
+    <AssemblyName>WexApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -55,10 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BtcApiException.cs" />
-    <Compile Include="BtceApi.cs" />
-    <Compile Include="BtceCurrency.cs" />
-    <Compile Include="BtcePair.cs" />
+    <Compile Include="WexApiException.cs" />
+    <Compile Include="WexApi.cs" />
+    <Compile Include="WexCurrency.cs" />
+    <Compile Include="WexPair.cs" />
     <Compile Include="CancelOrderAnswer.cs" />
     <Compile Include="Depth.cs" />
     <Compile Include="Funds.cs" />

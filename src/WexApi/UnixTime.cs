@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BtcE
+namespace Wex
 {
     internal static class UnixTime
     {

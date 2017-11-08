@@ -53,7 +53,7 @@
     <Compile Include="BitfinexTest.cs" />
     <Compile Include="BitstampTest.cs" />
     <Compile Include="BtcChinaTest.cs" />
-    <Compile Include="BtceTest.cs" />
+    <Compile Include="WexTest.cs" />
     <Compile Include="HuobiTest.cs" />
     <Compile Include="OKCoinTest.cs" />
     <Compile Include="Program.cs" />
@@ -71,10 +71,6 @@
       <Project>{32f257c3-e814-43aa-adfd-ec05fd351cd9}</Project>
       <Name>BtcChinaApi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BtceApi\BtceApi.csproj">
-      <Project>{5c94acd3-1172-4fad-bcae-bb7b201d7521}</Project>
-      <Name>BtceApi</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BitstampApi\BitstampApi.csproj">
       <Project>{E36ECD12-0B89-415A-BD60-7F698AA79152}</Project>
       <Name>BitstampApi</Name>
@@ -86,6 +82,10 @@
     <ProjectReference Include="..\OKCoinApi\OKCoinAPI.csproj">
       <Project>{d76daa8b-0266-4649-a005-1aea4141628f}</Project>
       <Name>OKCoinAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WexApi\WexApi.csproj">
+      <Project>{5c94acd3-1172-4fad-bcae-bb7b201d7521}</Project>
+      <Name>WexApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

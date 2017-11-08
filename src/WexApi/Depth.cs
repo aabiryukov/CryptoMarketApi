@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-namespace BtcE
+namespace Wex
 {
 	[JsonConverter(typeof(OrderInfoJsonConverter))]
 	public class OrderInfo
@@ -45,7 +45,7 @@ namespace BtcE
 					return orderInfo;
 				}
 
-				throw new BtcApiException("OrderInfoJsonConverter: Unexpected reader.TokenType=" + reader.TokenType);
+				throw new WexApiException("OrderInfoJsonConverter: Unexpected reader.TokenType=" + reader.TokenType);
 			}
 
 			public override bool CanConvert(Type objectType)

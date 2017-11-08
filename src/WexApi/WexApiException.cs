@@ -1,40 +1,40 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace BtcE
+namespace Wex
 {
 	[Serializable]
-	public class BtcApiException : Exception
+	public class WexApiException : Exception
 	{
 		#region Public Instance Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="BtcApiException" /> class.
+		/// Initializes a new instance of the <see cref="WexApiException" /> class.
 		/// </summary>
-		public BtcApiException() 
+		public WexApiException() 
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="BtcApiException" /> class 
+		/// Initializes a new instance of the <see cref="WexApiException" /> class 
 		/// with a descriptive message.
 		/// </summary>
 		/// <param name="message">A descriptive message to include with the exception.</param>
-		public BtcApiException(String message) : base(message)
+		public WexApiException(String message) : base(message)
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="BtcApiException" /> class
+		/// Initializes a new instance of the <see cref="WexApiException" /> class
 		/// with the specified descriptive message and inner exception.
 		/// </summary>
 		/// <param name="message">A descriptive message to include with the exception.</param>
 		/// <param name="innerException">A nested exception that is the cause of the current exception.</param>
-		public BtcApiException(String message, Exception innerException) : base(message, innerException)
+		public WexApiException(String message, Exception innerException) : base(message, innerException)
 		{
 		}
 
-		protected BtcApiException(SerializationInfo serializationInfo, StreamingContext context)
+		protected WexApiException(SerializationInfo serializationInfo, StreamingContext context)
 			: base(serializationInfo, context)
 		{
 		}

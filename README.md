@@ -4,8 +4,8 @@
 # Implemented Exchanges
 - Bitfinex
 - Bitstamp
+- WEX (ex BTC-e)
 - BTCChina
-- BTC-E
 - Huobi
 - OKCoin
 

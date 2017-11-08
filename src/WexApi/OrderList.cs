@@ -3,13 +3,13 @@ using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 
-namespace BtcE
+namespace Wex
 {
 	public class Order
 	{
 		[JsonProperty("pair", Required = Required.Always)]
 		[JsonConverter(typeof(StringEnumConverter))]
-		public BtcePair Pair { get; private set; }
+		public WexPair Pair { get; private set; }
 		[JsonProperty("type", Required = Required.Always)]
 		[JsonConverter(typeof(StringEnumConverter))]
 		public TradeType TradeType { get; private set; }
@@ -21,21 +21,24 @@ namespace BtcE
 		public UInt32 TimestampCreated { get; private set; }
 		[JsonProperty("status", Required = Required.Always)]
 		public int Status { get; private set; }
-/*
-		public static Order ReadFromJObject(JObject o) {
-			if ( o == null )
-				return null;
-			return new Order() {
-				Pair = BtcePairHelper.FromString(o.Value<string>("pair")),
-				Type = TradeTypeHelper.FromString(o.Value<string>("type")),
-				Amount = o.Value<decimal>("amount"),
-				Rate = o.Value<decimal>("rate"),
-				TimestampCreated = o.Value<UInt32>("timestamp_created"),
-				Status = o.Value<int>("status")
-			};
-		}
- */ 
-	}
+
+        public override string ToString() => $"[{Status}] {Pair}: {TradeType} {Amount} by {Rate} on {UnixTime.ConvertToDateTime(TimestampCreated)}";
+
+        /*
+                public static Order ReadFromJObject(JObject o) {
+                    if ( o == null )
+                        return null;
+                    return new Order() {
+                        Pair = BtcePairHelper.FromString(o.Value<string>("pair")),
+                        Type = TradeTypeHelper.FromString(o.Value<string>("type")),
+                        Amount = o.Value<decimal>("amount"),
+                        Rate = o.Value<decimal>("rate"),
+                        TimestampCreated = o.Value<UInt32>("timestamp_created"),
+                        Status = o.Value<int>("status")
+                    };
+                }
+         */
+    }
 
 	public class OrderList : Dictionary<int, Order>
 	{

@@ -1,7 +1,5 @@
 ﻿/*
- * Base for making api class for btc-e.com
- * DmT
- * 2012
+ * Base for making api class for wex.nz
  */
 
 using System.Net;
@@ -15,16 +13,16 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace BtcE
+namespace Wex
 {
     internal static class WebApi
 	{
-        internal const string RootUrl = "https://btc-e.nz";
+        internal const string RootUrl = "https://wex.nz";
         private static readonly HttpClient st_client = new HttpClient();
 
 		static WebApi()
 		{
-			st_client.Timeout = TimeSpan.FromSeconds(2);
+			st_client.Timeout = TimeSpan.FromSeconds(5);
 		}
 
 		internal static HttpClient Client { get { return st_client; } }
@@ -36,7 +34,7 @@ namespace BtcE
 		}
 	}
 
-    public class BtceApi
+    public class WexApi
     {
         private class NameValueDictionary : Dictionary<string, string> { }
 		
@@ -45,7 +43,7 @@ namespace BtcE
 		private readonly object m_nonceLock = new object();
 		private UInt32 m_nonce;
 
-	    public BtceApi(string key, string secret)
+	    public WexApi(string key, string secret)
         {
             m_key = key;
             m_hashMaker = new HMACSHA512(Encoding.ASCII.GetBytes(secret));
@@ -73,12 +71,12 @@ namespace BtcE
 
 			if (returnData.Success != 1)
 			{
-				throw new BtcApiException(string.Format(CultureInfo.CurrentCulture, "BTC-E error [succ={0}]: {1}", returnData.Success, returnData.ErrorText));
+				throw new WexApiException(string.Format(CultureInfo.CurrentCulture, "Wex error [succ={0}]: {1}", returnData.Success, returnData.ErrorText));
 			}
 
 			if (returnData.Object == null)
 			{
-				throw new BtcApiException(string.Format(CultureInfo.CurrentCulture, "BTC-E error [succ={0}, type={1}]: Returned object is null", returnData.Success, typeof(T)));
+				throw new WexApiException(string.Format(CultureInfo.CurrentCulture, "Wex error [succ={0}, type={1}]: Returned object is null", returnData.Success, typeof(T)));
 			}
 
 			return returnData.Object;
@@ -141,12 +139,12 @@ namespace BtcE
 			return result;
         }
 
-	    public OrderList ActiveOrders(BtcePair? pair = null)
+	    public OrderList ActiveOrders(WexPair? pair = null)
 	    {
 			var args = new NameValueDictionary();
 
 			if (pair != null) 
-				args.Add("pair", BtcePairHelper.ToString(pair.Value));
+				args.Add("pair", WexPairHelper.ToString(pair.Value));
 
 			var json = Query("ActiveOrders", args);
 
@@ -159,18 +157,18 @@ namespace BtcE
 			return result;
 		}
 
-        public TradeAnswer Trade(BtcePair pair, TradeType type, decimal rate, decimal amount)
+        public TradeAnswer Trade(WexPair pair, TradeType type, decimal rate, decimal amount)
         {
 			var args = new NameValueDictionary
             {
-                { "pair", BtcePairHelper.ToString(pair) },
+                { "pair", WexPairHelper.ToString(pair) },
                 { "type", TradeTypeHelper.ToString(type) },
                 { "rate", DecimalToString(rate) },
                 { "amount", DecimalToString(amount) }
             };
             var result = JObject.Parse(Query("Trade", args));
             if (result.Value<int>("success") == 0)
-				throw new BtcApiException(result.Value<string>("error"));
+				throw new WexApiException(result.Value<string>("error"));
             return TradeAnswer.ReadFromJObject(result["return"] as JObject);
         }
 
@@ -183,7 +181,7 @@ namespace BtcE
             var result = JObject.Parse(Query("CancelOrder", args));
 
             if (result.Value<int>("success") == 0)
-				throw new BtcApiException(result.Value<string>("error"));
+				throw new WexApiException(result.Value<string>("error"));
 
             return CancelOrderAnswer.ReadFromJObject(result["return"] as JObject);
         }
@@ -256,45 +254,45 @@ namespace BtcE
         {
             return d.ToString(CultureInfo.InvariantCulture);
         }
-        public static Depth GetDepth(BtcePair pair)
+        public static Depth GetDepth(WexPair pair)
         {
-			string queryStr = string.Format(CultureInfo.InvariantCulture, WebApi.RootUrl + "/api/2/{0}/depth", BtcePairHelper.ToString(pair));
+			string queryStr = string.Format(CultureInfo.InvariantCulture, WebApi.RootUrl + "/api/2/{0}/depth", WexPairHelper.ToString(pair));
 	        var json = WebApi.Query(queryStr);
 			var result = JsonConvert.DeserializeObject<Depth>(json);
 			return result;
 
 //            return Depth.ReadFromJObject(JObject.Parse(json));
         }
-        public static Ticker GetTicker(BtcePair pair)
+        public static Ticker GetTicker(WexPair pair)
         {
-			string queryStr = string.Format(CultureInfo.InvariantCulture, WebApi.RootUrl + "/api/2/{0}/ticker", BtcePairHelper.ToString(pair));
+			string queryStr = string.Format(CultureInfo.InvariantCulture, WebApi.RootUrl + "/api/2/{0}/ticker", WexPairHelper.ToString(pair));
 	        var json = WebApi.Query(queryStr);
 			return Ticker.ReadFromJObject(JObject.Parse(json)["ticker"] as JObject);
         }
-        public static List<TradeInfo> GetTrades(BtcePair pair)
+        public static List<TradeInfo> GetTrades(WexPair pair)
         {
-			string queryStr = string.Format(CultureInfo.InvariantCulture, WebApi.RootUrl + "/api/2/{0}/trades", BtcePairHelper.ToString(pair));
+			string queryStr = string.Format(CultureInfo.InvariantCulture, WebApi.RootUrl + "/api/2/{0}/trades", WexPairHelper.ToString(pair));
 	        var json = WebApi.Query(queryStr);
 			var result = JsonConvert.DeserializeObject<List<TradeInfo>>(json);
 	        return result;
 //            return JArray.Parse(json).OfType<JObject>().Select(TradeInfo.ReadFromJObject).ToList();
         }
-        public static decimal GetFee(BtcePair pair)
+        public static decimal GetFee(WexPair pair)
         {
-            string queryStr = string.Format(CultureInfo.InvariantCulture, WebApi.RootUrl + "/api/2/{0}/fee", BtcePairHelper.ToString(pair));
+            string queryStr = string.Format(CultureInfo.InvariantCulture, WebApi.RootUrl + "/api/2/{0}/fee", WexPairHelper.ToString(pair));
 	        var json = WebApi.Query(queryStr);
             return JObject.Parse(json).Value<decimal>("trade");
         }
     }
 
-    public static class BtceApiV3
+    public static class WexApiV3
     {
-        private static string MakePairListString(IEnumerable<BtcePair> pairlist)
+        private static string MakePairListString(IEnumerable<WexPair> pairlist)
         {
-            return string.Join("-", pairlist.Select(BtcePairHelper.ToString).ToArray());
+            return string.Join("-", pairlist.Select(WexPairHelper.ToString).ToArray());
         }
 
-        private static string Query(string method, IEnumerable<BtcePair> pairlist, Dictionary<string, string> args = null)
+        private static string Query(string method, IEnumerable<WexPair> pairlist, Dictionary<string, string> args = null)
         {
             var pairliststr = MakePairListString(pairlist);
             var sb = new StringBuilder();
@@ -327,12 +325,12 @@ namespace BtcE
         }
 */
 
-        private static Dictionary<BtcePair, T> ReadPairDict<T>(JObject o, Func<JContainer, T> valueReader)
+        private static Dictionary<WexPair, T> ReadPairDict<T>(JObject o, Func<JContainer, T> valueReader)
         {
-            return o.OfType<JProperty>().Select(x => new KeyValuePair<BtcePair, T>(BtcePairHelper.FromString(x.Name), valueReader(x.Value as JContainer))).ToDictionary(x => x.Key, x => x.Value);
+            return o.OfType<JProperty>().Select(x => new KeyValuePair<WexPair, T>(WexPairHelper.FromString(x.Name), valueReader(x.Value as JContainer))).ToDictionary(x => x.Key, x => x.Value);
         }
 
-        private static Dictionary<BtcePair, T> MakeRequest<T>(string method, IEnumerable<BtcePair> pairlist, Func<JContainer, T> valueReader, Dictionary<string, string> args = null)
+        private static Dictionary<WexPair, T> MakeRequest<T>(string method, IEnumerable<WexPair> pairlist, Func<JContainer, T> valueReader, Dictionary<string, string> args = null)
         {
 /*
 	        bool ignoreInvalid = true;
@@ -344,13 +342,13 @@ namespace BtcE
             var resobj = JObject.Parse(queryresult);
 
             if (resobj["success"] != null && resobj.Value<int>("success") == 0)
-				throw new BtcApiException(resobj.Value<string>("error"));
+				throw new WexApiException(resobj.Value<string>("error"));
 
             var r = ReadPairDict(resobj, valueReader);
             return r;
         }
 
-        public static Dictionary<BtcePair, Depth> GetDepth(BtcePair[] pairlist, int limit = 150)
+        public static Dictionary<WexPair, Depth> GetDepth(WexPair[] pairlist, int limit = 150)
         {
 			return MakeRequest(
 				"depth", 
@@ -360,12 +358,12 @@ namespace BtcE
 				);
         }
 
-        public static Dictionary<BtcePair, Ticker> GetTicker(BtcePair[] pairlist)
+        public static Dictionary<WexPair, Ticker> GetTicker(WexPair[] pairlist)
         {
             return MakeRequest("ticker", pairlist, x => Ticker.ReadFromJObject(x as JObject));
         }
 
-        public static Dictionary<BtcePair, List<TradeInfoV3>> GetTrades(BtcePair[] pairlist, int limit = 150)
+        public static Dictionary<WexPair, List<TradeInfoV3>> GetTrades(WexPair[] pairlist, int limit = 150)
         {
             var limits = new Dictionary<string, string> { { "limit", limit.ToString(CultureInfo.InvariantCulture) } };
 

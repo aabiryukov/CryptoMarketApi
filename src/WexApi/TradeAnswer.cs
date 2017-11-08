@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
-namespace BtcE {
+namespace Wex {
 	public class TradeAnswer {
 		public decimal Received { get; private set; }
 		public decimal Remains { get; private set; }

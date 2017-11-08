@@ -5,13 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BtcE
+namespace Wex
 {
 	public class Trade
 	{
 		[JsonProperty("pair", Required = Required.Always)]
 		[JsonConverter(typeof(StringEnumConverter))]
-		public BtcePair Pair { get; private set; }
+		public WexPair Pair { get; private set; }
 		[JsonProperty("type", Required = Required.Always)]
 		[JsonConverter(typeof(StringEnumConverter))]
 		public TradeType TradeType { get; private set; }
