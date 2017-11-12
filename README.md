@@ -10,4 +10,4 @@
 - OKCoin
 
 # Usage examples
-See project src\ApiTest
+See project Api\ApiTest
