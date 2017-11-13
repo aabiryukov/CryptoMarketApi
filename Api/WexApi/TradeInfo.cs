@@ -53,7 +53,7 @@ namespace Wex
 
 	    public override string ToString()
 	    {
-		    return string.Format(CultureInfo.InvariantCulture, "{0}: {1} / {2}btc", Timestamp, Price, Amount);
+		    return string.Format(CultureInfo.CurrentCulture, "[{0}] Price {1}, Amount {2} (vol: {3})", Timestamp, Price, Amount, Price * Amount);
 	    }
     }
 }

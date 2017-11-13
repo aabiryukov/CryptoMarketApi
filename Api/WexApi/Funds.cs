@@ -26,6 +26,30 @@ namespace Wex
 		[JsonProperty("eur")]
 		public decimal Eur { get; private set; }
 
+        // Wex tokens
+        [JsonProperty("btcet")]
+        public decimal Btcet { get; private set; }
+        [JsonProperty("ltcet")]
+        public decimal Ltcet { get; private set; }
+        [JsonProperty("nmcet")]
+        public decimal Nmcet { get; private set; }
+        [JsonProperty("nvcet")]
+        public decimal Nvcet { get; private set; }
+        [JsonProperty("ppcet")]
+        public decimal Ppcet { get; private set; }
+        [JsonProperty("dshet")]
+        public decimal Dshet { get; private set; }
+        [JsonProperty("ethet")]
+        public decimal Ethet { get; private set; }
+        [JsonProperty("bchet")]
+        public decimal Bchet { get; private set; }
+        [JsonProperty("usdet")]
+        public decimal Usdet { get; private set; }
+        [JsonProperty("ruret")]
+        public decimal Ruret { get; private set; }
+        [JsonProperty("euret")]
+        public decimal Euret { get; private set; }
+
 		public static Funds ReadFromJObject(JObject o) {
 			if ( o == null )
 				return null;
@@ -39,8 +63,21 @@ namespace Wex
                 Bch = o.Value<decimal>("bch"),
                 Usd = o.Value<decimal>("usd"),
                 Rur = o.Value<decimal>("rur"),
-                Eur = o.Value<decimal>("eur")
-			};
+                Eur = o.Value<decimal>("eur"),
+
+                // Tokens
+                Btcet = o.Value<decimal>("btcet"),
+                Ltcet = o.Value<decimal>("ltcet"),
+                Nmcet = o.Value<decimal>("nmcet"),
+                Nvcet = o.Value<decimal>("nvcet"),
+                Ppcet = o.Value<decimal>("ppcet"),
+                Dshet = o.Value<decimal>("dshet"),
+                Ethet = o.Value<decimal>("ethet"),
+                Bchet = o.Value<decimal>("bchet"),
+                Usdet = o.Value<decimal>("usdet"),
+                Ruret = o.Value<decimal>("ruret"),
+                Euret = o.Value<decimal>("euret"),
+            };
 		} 
 	};
 
