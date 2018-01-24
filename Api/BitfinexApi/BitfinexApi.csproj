@@ -38,8 +38,8 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+    <Reference Include="SuperSocket.ClientEngine, Version=0.9.0.0, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SuperSocket.ClientEngine.Core.0.9.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,13 +49,29 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebSocket4Net, Version=0.15.1.10, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebSocket4Net.0.15.1\lib\net45\WebSocket4Net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitfinexApi.cs" />
+    <Compile Include="BitfinexSocketApi.cs" />
     <Compile Include="BtcInfo.cs" />
+    <Compile Include="Converters\BitfinexPropertyAttribute.cs" />
+    <Compile Include="Converters\BitfinexResultConverter.cs" />
+    <Compile Include="Converters\FundingTypeConverter.cs" />
+    <Compile Include="Converters\MarginFundingTypeConverter.cs" />
+    <Compile Include="Converters\OrderStatusConverter.cs" />
+    <Compile Include="Converters\OrderTypeConverter.cs" />
+    <Compile Include="Converters\PositionStatusConverter.cs" />
+    <Compile Include="Converters\TimestampConverter.cs" />
+    <Compile Include="Converters\WalletTypeConverter.cs" />
+    <Compile Include="Errors\BitfinexErrorKey.cs" />
+    <Compile Include="Errors\BitfinexErrors.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Json\BitfinexActiveCreditsResponse.cs" />
     <Compile Include="Json\BitfinexActiveSwapsInMarginResponse.cs" />
+    <Compile Include="Json\Objects\BitfinexApiResult.cs" />
     <Compile Include="Json\BitfinexBalanceResponse.cs" />
     <Compile Include="Json\BitfinexCancelMultipleOrderPost.cs" />
     <Compile Include="Json\BitfinexCancelOrderPost.cs" />
@@ -65,6 +81,8 @@
     <Compile Include="Json\BitfinexCloseSwapPost.cs" />
     <Compile Include="Json\BitfinexDepositPost.cs" />
     <Compile Include="Json\BitfinexDepositResponse.cs" />
+    <Compile Include="Json\Objects\BitfinexApiKeyPermissions.cs" />
+    <Compile Include="Json\Objects\BitfinexError.cs" />
     <Compile Include="Json\BitfinexHistoryPost.cs" />
     <Compile Include="Json\BitfinexHistoryResponse.cs" />
     <Compile Include="Json\BitfinexLendbookResponse.cs" />
@@ -93,9 +111,33 @@
     <Compile Include="Json\LendbookTypes\Bid.cs" />
     <Compile Include="Json\MarginInfoTypes\MarginLimit.cs" />
     <Compile Include="Json\MultipleOrderTypes\OrderId.cs" />
+    <Compile Include="Json\Objects\BitfinexEnums.cs" />
+    <Compile Include="Json\Objects\BitfinexFundingCredit.cs" />
+    <Compile Include="Json\Objects\BitfinexFundingLoan.cs" />
+    <Compile Include="Json\Objects\BitfinexFundingOffer.cs" />
+    <Compile Include="Json\Objects\BitfinexOrder.cs" />
+    <Compile Include="Json\Objects\BitfinexPosition.cs" />
+    <Compile Include="Json\Objects\BitfinexTradeSimple.cs" />
+    <Compile Include="Json\Objects\BitfinexWallet.cs" />
     <Compile Include="Json\OrderbookTypes\Ask.cs" />
     <Compile Include="Json\OrderbookTypes\Bid.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexAuthentication.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexAuthenticationResponse.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexEventRegistration.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexInfo.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexSocketData.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexSocketError.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexSocketEvent.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexSocketFundingPairTick.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexSocketOrderBook.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexSocketTradingPairTick.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexSubscribe.cs" />
+    <Compile Include="Json\SocketObjets\BitfinexSubscriptionResponse.cs" />
+    <Compile Include="Json\SocketObjets\JsonConvertAttribute.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\TraceTextWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BitfinexAbstractApi.cs" />
     <Compile Include="Utility\Common.cs" />
   </ItemGroup>
   <ItemGroup>

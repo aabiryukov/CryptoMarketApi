@@ -8,13 +8,12 @@ using System.Text;
 using Bitfinex.Utility;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using NLog;
 using Bitfinex.Json;
 
 namespace Bitfinex
 {
-	public sealed class BitfinexApi
-	{
+	public class BitfinexApi : BitfinexAbstractApi
+    {
 		private static class WebApi
 		{
 			private static readonly HttpClient st_client = new HttpClient();
@@ -42,10 +41,7 @@ namespace Bitfinex
 		}
 
 // ReSharper disable once InconsistentNaming
-		private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-
-		private readonly string m_apiSecret;
-		private readonly string m_apiKey;
+//		private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
 		private const string ApiBfxKey = "X-BFX-APIKEY";
 		private const string ApiBfxPayload = "X-BFX-PAYLOAD";
@@ -93,8 +89,9 @@ namespace Bitfinex
 
 		public BitfinexApi(string apiKey, string apiSecret)
 		{
-			m_apiKey = apiKey;
-			m_apiSecret = apiSecret;
+            SetApiKey(apiKey);
+            SetApiSecret(apiSecret);
+
 			Log.Info("Connecting to Bitfinex Api with key: {0}", apiKey);
 		}
 
@@ -468,7 +465,7 @@ namespace Bitfinex
 
 			Log.Info("Balances:");
 			foreach (var balance in balancesObj)
-				Log.Info(balance);
+				Log.Info(balance.ToString());
 
 			return balancesObj;
 		}
@@ -763,7 +760,7 @@ namespace Bitfinex
 				var jsonObj = JsonConvert.SerializeObject(obj);
 				var payload = Convert.ToBase64String(Encoding.UTF8.GetBytes(jsonObj));
 				request = new HttpRequestMessage(HttpMethod.Post, obj.Request);
-				request.Headers.Add(ApiBfxKey, m_apiKey);
+				request.Headers.Add(ApiBfxKey, ApiKey);
 				request.Headers.Add(ApiBfxPayload, payload);
 				request.Headers.Add(ApiBfxSig, GetHexHashSignature(payload));
 			}
@@ -791,17 +788,6 @@ namespace Bitfinex
 		}
 
 		#endregion
-
-//		private void CheckResultCode()
-
-		private string GetHexHashSignature(string payload)
-		{
-			using (var hmac = new HMACSHA384(Encoding.UTF8.GetBytes(m_apiSecret)))
-			{
-				var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(payload));
-				return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
-			}
-		}
 
 	}
 }

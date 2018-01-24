@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BtcChinaApi")]
-[assembly: AssemblyCopyright("Copyright © Alexander Biryukov 2015-2017")]
+[assembly: AssemblyCopyright("Copyright © AB 2015-2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

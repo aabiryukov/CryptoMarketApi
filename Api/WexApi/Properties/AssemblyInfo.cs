@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BtceApi")]
-[assembly: AssemblyCopyright("Copyright © DmT 2012, © Alexander Biryukov 2017")]
+[assembly: AssemblyCopyright("Copyright © DmT 2012, © AB 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

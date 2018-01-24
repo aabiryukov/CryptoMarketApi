@@ -9,10 +9,10 @@ namespace ApiTest
 	{
 		static void Main(string[] args) 
 		{
-			WexTest.Test();
+//			WexTest.Test();
 //			BitstampTest.Test();
 //			BtcChinaTest.Test();
-//			BitfinexTest.Test();
+			BitfinexTest.Test();
 //			OKCoinTest.Test();
 //			HuobiTest.Test();
 		}

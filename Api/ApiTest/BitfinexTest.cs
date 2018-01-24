@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Bitfinex;
 using Bitfinex.Json;
+using Bitfinex.Json.Objects;
+using Bitfinex.Json.SocketObjets;
 
 namespace ApiTest
 {
@@ -16,6 +18,29 @@ namespace ApiTest
 
 		public static void Test()
 		{
+
+            using (var wsApi = new BitfinexSocketApi())
+			{
+                BitfinexSocketApi.SetLogVerbosity(Bitfinex.Logging.LogVerbosity.Info);
+
+                Console.WriteLine("Bitfinex: Socket starting...");
+                wsApi.Connect();
+
+                Task.Delay(3000).Wait();
+/*
+                var subcribtion1 = wsApi.SubscribeToTradingPairTicker("tETHBTC", summary =>
+                {
+                    Console.WriteLine($"{DateTime.Now} BTC-ETH: {summary.LastPrice}");
+                });
+                Console.WriteLine($"Subcribtion1: {subcribtion1}");
+*/
+
+                var subcribtion2 = wsApi.SubscribeToOrderBooks("tETHBTC", OnOrderBooks, frequency: Frequency.F0, length: 1);
+                Console.WriteLine($"Subcribtion2: {subcribtion2}");
+
+                Console.ReadLine();
+			}
+
 /*
 			var ticker = BitfinexApi.GetPublicTicker(BtcInfo.PairTypeEnum.btcusd, BtcInfo.BitfinexUnauthenicatedCallsEnum.pubticker);
 			Console.WriteLine(ticker.LastPrice);
@@ -55,5 +80,13 @@ namespace ApiTest
 			Console.WriteLine("Buy: {0}", buyAnswer);
  */ 
 		}
-	}
+
+        private static void OnOrderBooks(BitfinexSocketOrderBook[] orders)
+        {
+            foreach (var order in orders)
+            {
+                Console.WriteLine($"{DateTime.Now} | [{order.Price}] {order.Amount} : {order.Count}");
+            }
+        }
+    }
 }

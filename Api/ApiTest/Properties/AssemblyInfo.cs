@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ApiTest")]
-[assembly: AssemblyCopyright("Copyright © Alexander Biryukov 2017")]
+[assembly: AssemblyCopyright("Copyright © AB 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
