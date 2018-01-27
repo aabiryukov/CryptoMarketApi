@@ -61,8 +61,12 @@ namespace Bitfinex
             SetApiCredentials(apiKey, apiSecret);
         }
 
+        public bool IsClosed => socket == null || socket.State == WebSocketState.Closed;
+
         public void Connect()
         {
+            Close();
+
             socket = new WebSocket(BaseAddress);
 //            socket.Log.Level = LogLevel.Info;
             socket.Closed += SocketClosed;
@@ -71,6 +75,15 @@ namespace Bitfinex
             socket.MessageReceived += SocketMessage;
 
             socket.Open();
+        }
+
+        public void Close()
+        {
+            if(socket != null)
+            {
+                socket.Dispose();
+                socket = null;
+            }
         }
 
         private void SocketClosed(object sender, EventArgs e)
@@ -480,6 +493,16 @@ namespace Bitfinex
         {
             lock(eventListLock)
                 return eventRegistrations.OfType<T>();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if(disposing)
+            {
+                Close();
+            }
+
+            base.Dispose(disposing);
         }
     }
 }

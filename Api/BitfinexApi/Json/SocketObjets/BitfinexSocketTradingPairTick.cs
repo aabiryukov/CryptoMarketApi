@@ -12,24 +12,24 @@ namespace Bitfinex.Json.SocketObjets
     public class BitfinexSocketTradingPairTick
     {
         [BitfinexProperty(0)]
-        public double Bid { get; set; }
+        public decimal Bid { get; set; }
         [BitfinexProperty(1)]
-        public double BidSize { get; set; }
+        public decimal BidSize { get; set; }
         [BitfinexProperty(2)]
-        public double Ask { get; set; }
+        public decimal Ask { get; set; }
         [BitfinexProperty(3)]
-        public double AskSize { get; set; }
+        public decimal AskSize { get; set; }
         [BitfinexProperty(4)]
-        public double DailyChange { get; set; }
+        public decimal DailyChange { get; set; }
         [BitfinexProperty(5)]
-        public double DailyChangePercentage { get; set; }
+        public decimal DailyChangePercentage { get; set; }
         [BitfinexProperty(6)]
-        public double LastPrice { get; set; }
+        public decimal LastPrice { get; set; }
         [BitfinexProperty(7)]
-        public double Volume { get; set; }
+        public decimal Volume { get; set; }
         [BitfinexProperty(8)]
-        public double High { get; set; }
+        public decimal High { get; set; }
         [BitfinexProperty(9)]
-        public double Low { get; set; }
+        public decimal Low { get; set; }
     }
 }

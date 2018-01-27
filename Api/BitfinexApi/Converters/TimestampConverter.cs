@@ -27,7 +27,7 @@ namespace Bitfinex.Converters
         {
             if (reader == null) throw new ArgumentNullException(nameof(reader));
 
-            var t = Convert.ToInt64(Math.Round(double.Parse(reader.Value.ToString())));
+            var t = Convert.ToInt64(Math.Round(decimal.Parse(reader.Value.ToString(), CultureInfo.InvariantCulture)));
             return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(t);
         }
 
