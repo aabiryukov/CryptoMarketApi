@@ -5,10 +5,8 @@ namespace ApiTest
 {
 	static class WexTest
 	{
-//		private const string ApiKey = "PUT-HERE-API-KEY";
-//		private const string ApiSecret = "PUT-HERE-API-SECRET";
-        private const string ApiKey = "FJ6567VM-GMWFTOPI-26H58S3U-ST3TVQJE-7V81IVPK";
-        private const string ApiSecret = "e7673dff7525d504428c8de560e95940f14db3790dad4d947d6f9edd62fc5eed";
+		private const string ApiKey = "PUT-HERE-API-KEY";
+		private const string ApiSecret = "PUT-HERE-API-SECRET";
 
         public static void Test()
 		{
